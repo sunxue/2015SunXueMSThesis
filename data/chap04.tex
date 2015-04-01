@@ -30,17 +30,17 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \centering
   \begin{minipage}[b]{0.3\textwidth} 
       \centering 
-      \includegraphics[width=4cm]{11}
+      \includegraphics[width=4cm]{chap04/11}
         \centerline{(a)}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=5cm]{20}
+    \includegraphics[width=5cm]{chap04/20}
       \centerline{(b)}\medskip
   \end{minipage}
   \begin{minipage}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=6cm]{28}
+    \includegraphics[width=6cm]{chap04/28}
       \centerline{(c)}\medskip
   \end{minipage}
 \caption{扇贝纹理及环结构}
@@ -54,11 +54,11 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{scallop-framework}
+  \includegraphics[width=0.8\textwidth]{chap04/scallop-framework}
   \caption{扇贝图像识别}
   \label{fig:scallop-framework}
 \end{figure}
-\section{扇贝图像采集与数据库制作}
+\section{扇贝图像数据库构建}
 \label{}
 由于没有公开的用于扇贝识别的图像数据库，我们从网络上采集了一部分扇贝图像数据作为实验对象图\ref{fig:scallop}所示为几个从网络中采集的扇贝图像的例子。
 
@@ -68,22 +68,22 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=5cm]{28-ori}
+      \includegraphics[width=5cm]{chap04/28-ori}
         \centerline{(a)原图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{28-da}
+    \includegraphics[width=6cm]{chap04/28-da}
       \centerline{(b)放大图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=5cm]{28-qu}
+      \includegraphics[width=5cm]{chap04/28-qu}
         \centerline{(c)遮盖图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=4cm]{28-zhuan}
+    \includegraphics[width=4cm]{chap04/28-zhuan}
       \centerline{(d)旋转图}\medskip
   \end{minipage}
 \caption{扇贝参考图像与待识别图像}
@@ -96,32 +96,32 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{28-suoxiao}
+      \includegraphics[width=6cm]{chap04/28-suoxiao}
         \centerline{(a)放大分割图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{28-suoxiao-skel}
+    \includegraphics[width=5cm]{chap04/28-suoxiao-skel}
       \centerline{(b)放大骨架化图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=5cm]{28-zhegai}
+      \includegraphics[width=5cm]{chap04/28-zhegai}
         \centerline{(c)遮盖分割图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{28-zhegai-skel}
+    \includegraphics[width=5cm]{chap04/28-zhegai-skel}
       \centerline{(d)遮盖骨架化图}\medskip
   \end{minipage}
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=5cm]{28-xuanzhuan}
+      \includegraphics[width=5cm]{chap04/28-xuanzhuan}
         \centerline{(e)旋转分割图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{28-xuanzhuan-skel}
+    \includegraphics[width=5cm]{chap04/28-xuanzhuan-skel}
       \centerline{(f)旋转骨架化图}\medskip
   \end{minipage}
 \caption{扇贝图像分割与骨架化}
@@ -134,12 +134,12 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=5cm]{28-ori}
+      \includegraphics[width=5cm]{chap04/28-ori}
         \centerline{(a)原图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{scallop-cycle1}
+    \includegraphics[width=5cm]{chap04/scallop-cycle1}
       \centerline{(b)环结构}\medskip
     \end{minipage}
 \caption{扇贝参考图像与待识别图像中的环结构}
@@ -147,7 +147,7 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \end{figure}
 
 
-\section{环结构匹配及扇贝图像识别}
+\section{环结构匹配与扇贝图像识别}
 \label{}
 
 由\label{cha:cycle}章可知，由动态移动路径算法检测环结构后，我们采用分支角度与分支长度来把环结构描述成为归一化的特征向量，由此，扇贝图像识别问题就转化为特征向量的匹配问题。
@@ -158,32 +158,32 @@ Mikamip\cite{mikamip}研究了扇贝的外部形态特征，开发了机械化�
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{suoxiao-yuantu}
+      \includegraphics[width=6cm]{chap04/suoxiao-yuantu}
         \centerline{(a)原图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{suoxiao}
+    \includegraphics[width=6cm]{chap04/suoxiao}
       \centerline{(b)缩小后图像}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{zhegai-yuantu}
+      \includegraphics[width=6cm]{chap04/zhegai-yuantu}
         \centerline{(a)原图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{zhegai}
+    \includegraphics[width=6cm]{chap04/zhegai}
       \centerline{(b)遮盖后图像}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{xuanzhuan-yuantu}
+      \includegraphics[width=6cm]{chap04/xuanzhuan-yuantu}
         \centerline{(a)原图}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{xuanzhuan}
+    \includegraphics[width=6cm]{chap04/xuanzhuan}
       \centerline{(b)旋转后图像}\medskip
     \end{minipage}
 \caption{扇贝参考图像与待识别图像中匹配的环结构}

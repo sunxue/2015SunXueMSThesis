@@ -26,18 +26,17 @@
 鉴于此，我们提出了基于环结构特征的从全局到局部的视网膜图像配准方法。环结构由血管分叉点和交叉点及与它们相连的血管组成。这一特征对于视网膜血管来说更加唯一和可靠，故它同样可应用于其他的领域，比如视网膜识别等。为了克服对视网膜分割结果的依赖性，我们采用多小波核多层分解方法，从而产生多尺度的血管树。不同尺度的血管树所代表的分割的精细程度不同。然后我们提出了动态路径移动算法来提取由多个不同数量的分叉点组成的多环特征，归一化的分支角度和长度来作为特征向量，采用相似性度量来进行全局初次配准。对于远离匹配特征的区域，我们采用局部分叉点信息来纠正配准精度。最后，我们采用骨架化对准精度来优化特征和尺度的选择，基本流程如图\ref{fig:framework}。
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1\textwidth]{figures/framework}
+  \includegraphics[width=1\textwidth]{chap03/framework}
   \caption{基本框架}
   \label{fig:framework}
 \end{figure}
 
-\section{环结构全局配准}
-\label{}
+
 由第\ref{cha:cycle}章可知，采用多小波核多层分解方法，可以产生多尺度的血管树，为了确保配准的精度，我们选择了14个尺度的血管树，分别提取每个血管树中的环结构，描述成特征向量。这样，一幅图像则有14组特征向量。
 
 视网膜图像配准是指将不同角度和时间获取的两幅同一个个体的图像变换到一幅图像中。两幅图像进行配准，即是$14 \time 14$组特征向量之间的匹配。我们采用相似性度量来寻找两幅图像特征向量之间的匹配对。
 
-\subsubsection{相似性度量}
+\section{相似性度量}
 \label{cha:similarity}
 
 假设参考图像的某一尺度与待配准图像的某一尺度分别有$m$和$n$组环结构特征，则他们之间的相似性测度为
@@ -48,7 +47,7 @@ D_{pq} = mean(|V_p-W_q|), p = 1, 2, \ldots, m; q = 1, 2, \ldots, n
 
 通过观察发现，视网膜血管图中，由三个分叉点、四个分叉点、五个分叉点组成的环居多，为了减小算法的复杂性，我们只选择三点环、四点环、五点环来作为特征。因此，相似性度量只在同种类型的环之间进行计算，得到最匹配的环结构。这种方法虽然可能丢失一些特征，但更能保证匹配的准确性且减小算法的复杂性。
 
-\subsubsection{相似性变换}
+\section{相似性变换}
 \label{}
 
 要使一幅图像变换到另一幅图像中，就要采用几何变换模型进行变换。几何变换模型是指坐标空间或图像 的像素值转换到另一个坐标空间或像素值的变换。常见的变换方式有平移、缩放、旋转、翻转、转置等。常用的空间变换模型有相似性变换、仿射变换、二次多项式变换等。
@@ -244,7 +243,7 @@ x^2, xy, y^2, x, y, 1
 为了确保配准的精准度，我们不仅使用组成环的分叉点的坐标，也检测了与环相连的血管上的点或分叉点加入特征点集。基本流程如图\ref{fig:global}。
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1\textwidth]{figures/global}
+  \includegraphics[width=1\textwidth]{chap03/global}
   \caption{将与环相连的血管上的点加入特征点集}
   \label{fig:global}
 \end{figure}
@@ -263,12 +262,12 @@ x^2, xy, y^2, x, y, 1
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{bw1-cycle-vessel}
+      \includegraphics[width=6cm]{chap03/bw1-cycle-vessel}
         \centerline{(a) 参考图像}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{bw2-cycle-vessel}
+    \includegraphics[width=6cm]{chap03/bw2-cycle-vessel}
       \centerline{(b) 待配准图像}\medskip
   \end{minipage}
 \caption{相匹配的环结构及与其相连的血管上的对应点}
@@ -283,12 +282,12 @@ x^2, xy, y^2, x, y, 1
 \centering
   \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{067-119-initial_reg}
+      \includegraphics[width=6cm]{chap03/067-119-initial_reg}
         \centerline{(a) 骨架化配准结果}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{067-119-initial_result}
+    \includegraphics[width=6cm]{chap03/067-119-initial_result}
       \centerline{(b) 配准后的原图像}\medskip
   \end{minipage}
 \caption{全局初始配准结果}
@@ -296,8 +295,7 @@ x^2, xy, y^2, x, y, 1
 \end{figure}
 
 
-\section{分叉点局部配准}
-\label{}
+
 
 由图\ref{fig:global results}可以看到，虽然使用环上的分叉点及与环相连的血管上的点能准确的进行配准，但仍不够鲁棒，远离这些特征点的区域会出现几个像素的偏差。因此，我们采用了一种从全局到局部的策略，即增加一些局部分叉点来纠正配不准的区域，以此来提高配准精度。配准流程图如图\ref{fig:local}。基本步骤为：
 \begin{enumerate}
@@ -309,7 +307,7 @@ x^2, xy, y^2, x, y, 1
 图\ref{fig:final-results}给出了两个例子，显示了全局与局部配准结果。从图中我们可以看出，在全局初始配准中未配准的血管经过局部配准后得到了纠正。
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=1\textwidth]{figures/local}
+  \includegraphics[width=1\textwidth]{chap03/local}
   \caption{局部配准流程图}
   \label{fig:local}
 \end{figure}
@@ -319,54 +317,54 @@ x^2, xy, y^2, x, y, 1
 
 \begin{minipage}[b]{0.3\textwidth} 
       \centering 
-      \includegraphics[width=4cm]{R160.png}
+      \includegraphics[width=4cm]{chap03/R160.png}
         \centerline{(a) 参考图像}\medskip
 \end{minipage}
   \begin{minipage}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=4cm]{R161.png}
+    \includegraphics[width=4cm]{chap03/R161.png}
       \centerline{(b) 待配准图像}\medskip
   \end{minipage}
 \begin{minipage}[b]{0.3\textwidth}
 	\centering
-      \includegraphics[width=4cm]{160-161-result.png}
+      \includegraphics[width=4cm]{chap03/160-161-result.png}
         \centerline{(c) 配准后的原图像}\medskip
     \end{minipage}
 \\
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{160-161-initial.png}
+    \includegraphics[width=5cm]{chap03/160-161-initial.png}
       \centerline{(d) 全局配准骨架化结果}\medskip
   \end{minipage}
  \begin{minipage}[b]{0.48\textwidth}
     \centering
-      \includegraphics[width=5cm]{160-161-local.png}
+      \includegraphics[width=5cm]{chap03/160-161-local.png}
         \centerline{(e) 局部配准骨架化结果}\medskip
     \end{minipage}
 \\
   \begin{minipage}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=4cm]{R096.png}
+    \includegraphics[width=4cm]{chap03/R096.png}
       \centerline{(f) 参考图像}\medskip
   \end{minipage}
 \begin{minipage}[b]{0.3\textwidth}
-      \includegraphics[width=4cm]{R212.png}
+      \includegraphics[width=4cm]{chap03/R212.png}
        \centerline{(g) 待配准图像}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.3\textwidth}
     \centering
-    \includegraphics[width=4cm]{096-212-result.png}
+    \includegraphics[width=4cm]{chap03/096-212-result.png}
           \centerline{(h) 配准后的原图像}\medskip
   \end{minipage}
 \\
  \begin{minipage}[b]{0.48\textwidth}
     \centering
-      \includegraphics[width=5cm]{096-212-initial.png}
+      \includegraphics[width=5cm]{chap03/096-212-initial.png}
        \centerline{(i) 全局配准骨架化结果}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=5cm]{096-212-local.png}
+    \includegraphics[width=5cm]{chap03/096-212-local.png}
            \centerline{(j) 局部配准骨架化结果}\medskip
   \end{minipage}
 \caption{全局与局部配准结果}
@@ -459,34 +457,34 @@ $H(A), H(B)$和$H(A,B)$分别是边缘和联合熵。采用互信息进行评估
 
 \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{similarity1.png}
+      \includegraphics[width=6cm]{chap03/similarity1.png}
         \centerline{(a) 相似性变换}\medskip
 \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{similarity2.png}
+    \includegraphics[width=6cm]{chap03/similarity2.png}
       \centerline{(d) 相似性变换变换}\medskip
   \end{minipage}
 \\
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{affine1.png}
+    \includegraphics[width=6cm]{chap03/affine1.png}
       \centerline{(b) 仿射变换}\medskip
   \end{minipage}
  \begin{minipage}[b]{0.48\textwidth}
     \centering
-      \includegraphics[width=6cm]{affine2.png}
+      \includegraphics[width=6cm]{chap03/affine2.png}
         \centerline{(e) 仿射变换}\medskip
     \end{minipage}
 \\
 \begin{minipage}[b]{0.48\textwidth}
 	\centering
-      \includegraphics[width=6cm]{polynomial1.png}
+      \includegraphics[width=6cm]{chap03/polynomial1.png}
         \centerline{(c) 二次多项式变换}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{polynomial2.png}
+    \includegraphics[width=6cm]{chap03/polynomial2.png}
       \centerline{(f) 二次多项式变换}\medskip
   \end{minipage}
 \caption{不同变换模型的配准结果}
@@ -518,28 +516,28 @@ $H(A), H(B)$和$H(A,B)$分别是边缘和联合熵。采用互信息进行评估
 \centering
 \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=7cm]{harrias1}
+      \includegraphics[width=7cm]{chap03/harrias1}
         \centerline{(a) 参考图像Harrias角点提取}\medskip
 \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=8.5cm]{harrias2}
+    \includegraphics[width=8.5cm]{chap03/harrias2}
       \centerline{(b) 待配准图像Harrias角点提取}\medskip
   \end{minipage}
 \begin{minipage}[b]{1\textwidth}
 	\centering
-      \includegraphics[width=15cm]{sift}
+      \includegraphics[width=15cm]{chap03/sift}
         \centerline{(c) SIFT特征匹配}\medskip
     \end{minipage}
 \\
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=7cm]{1}
+    \includegraphics[width=7cm]{chap03/1}
       \centerline{(d) 参考图像中的环结构特征}\medskip
   \end{minipage}
  \begin{minipage}[b]{0.48\textwidth}
     \centering
-      \includegraphics[width=8cm]{2}
+      \includegraphics[width=8cm]{chap03/2}
         \centerline{(e) 待配准图像中的环结构特征}\medskip
     \end{minipage}
 \caption{不同特征的配准结果}
@@ -553,7 +551,7 @@ $H(A), H(B)$和$H(A,B)$分别是边缘和联合熵。采用互信息进行评估
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.4\textwidth]{bifurcation-structure}
+  \includegraphics[width=0.4\textwidth]{chap03/bifurcation-structure}
   \caption{分叉结构特征}
   \label{fig:bifurcation structure}
 \end{figure}
@@ -587,32 +585,32 @@ Methods & SR & SAEM (pixel)\\
 \centering
 \begin{minipage}[b]{0.48\textwidth} 
       \centering 
-      \includegraphics[width=6cm]{bifu1.png}
+      \includegraphics[width=6cm]{chap03/bifu1.png}
         \centerline{(a) 分叉结构特征}\medskip
 \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{bifu2.png}
+    \includegraphics[width=6cm]{chap03/bifu2.png}
       \centerline{(d) 分叉结构特征}\medskip
   \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{bifu-local1.png}
+    \includegraphics[width=6cm]{chap03/bifu-local1.png}
       \centerline{(b) 分叉结构 + 局部特征}\medskip
   \end{minipage}
  \begin{minipage}[b]{0.48\textwidth}
     \centering
-      \includegraphics[width=6cm]{bifu-local2.png}
+      \includegraphics[width=6cm]{chap03/bifu-local2.png}
         \centerline{(e) 分叉结构 + 局部特征}\medskip
     \end{minipage}
 \begin{minipage}[b]{0.48\textwidth}
 	\centering
-      \includegraphics[width=6cm]{ours1.png}
+      \includegraphics[width=6cm]{chap03/ours1.png}
         \centerline{(c) 我们的方法}\medskip
     \end{minipage}
   \begin{minipage}[b]{0.48\textwidth}
     \centering
-    \includegraphics[width=6cm]{ours2.png}
+    \includegraphics[width=6cm]{chap03/ours2.png}
       \centerline{(f) 我们的方法}\medskip
   \end{minipage}
 \caption{不同方法的配准结果}

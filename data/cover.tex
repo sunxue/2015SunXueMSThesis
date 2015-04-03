@@ -137,18 +137,19 @@
 \newcommand{\UDC}{}%UDC
 \newcommand{\oucctitle}{图像中环结构特征及其应用}%论文中文题目
 \ctitle{图像中环结构特征及其应用}%必须修改因为页眉中用到
-\cauthor{孙雪}%可以选择修改因为仅在 pdf 文档信息中用到
+\cauthor{***}%可以选择修改因为仅在 pdf 文档信息中用到
 \cdegree{工学博士}%可以选择修改因为仅在 pdf 文档信息中用到
 \ckeywords{环结构特征, 图论, 视网膜图像配准, 扇贝图像识别}%可以选择修改因为仅在 pdf 文档信息中用到
-\newcommand{\ouccauthor}{孙雪}%作者中文姓名
+\newcommand{\ouccauthor}{***}%作者中文姓名
 %\newcommand{\ouccsupervisor}{姬光荣教授}%作者导师中文姓名
 %\newcommand{\ouccdegree}{博\hspace{1em}士}%作者申请学位级别
 %\newcommand{\ouccmajor}{海洋信息探测与处理}%作者专业名称
 %\newcommand{\ouccdateday}{\CJKdigits{\the\year}年\CJKnumber{\the\month}月\CJKnumber{\the\day}日}
 %\newcommand{\ouccdate}{\CJKdigits{\the\year}年\CJKnumber{\the\month}月}
-\newcommand{\oucdatedefense}{2015年05月28日}%论文答辩时间
+\newcommand{\oucdatedefense}{}%论文答辩时间
 %\newcommand{\oucdatedegree}{2009年6月}%学位授予时间
 \newcommand{\oucgratitude}{谨以此论文献给我的导师和亲人！}%封面感谢语
+
 \newcommand{\oucetitle}{Cycle strcutural feature in image and its applications}%论文英文题目
 %\newcommand{\ouceauthor}{Haiyong Zheng}%作者英文姓名
 \newcommand{\oucthesis}{\textsc{OUCThesis}}
@@ -167,6 +168,9 @@
 \end{flushright}
 }
 
+
+\newpage
+\mbox{}
 \newpage
 
 % 论文封面第二页
@@ -195,6 +199,9 @@
 }
 
 \newpage
+\mbox{}
+\newpage
+
 
 % 论文封面第三页
 %%不需要改动%%
@@ -234,7 +241,8 @@
 签字日期：\hskip1cm 年\hskip0.7cm 月\hskip0.7cm 日\relax\hspace*{1.2cm}}
 
 \newpage
-
+\mbox{}
+\newpage
 \pagestyle{plain}
 \clearpage\pagenumbering{roman}
 
@@ -248,11 +256,11 @@
   \indent
   近年来，随着计算机视觉领域的不断发展，特征提取作为最重要的一环得到了大量学者的重视和研究。局部特征可把繁杂的图像匹配的问题转换为特征向量的度量问题，可以大大减小算法的复杂度，因而获得了迅速发展。本文针对存在环结构特征的图像，提出了一种环结构局部不变特征，满足平移、缩放、旋转不变性，可应用于图像识别、图像配准等各个领域。本文的主要工作有：
 \begin{enumerate}
-\item 环结构特征提取与描述。结合图论中环的概念，实现了在图像中提取及描述环结构特征，即先用多尺度分割算法与骨架化算法提取图像中的点与线，滤除不能组成环结构的特征点，从而找到特征点之间的连接关系。应用我们提出的动态路径移动算法检测环结构，并用分叉角度与分支长度来把环结构描述成特征向量。
+\item 环结构特征提取与描述。结合图论中环的概念，实现了在图像中提取及描述环结构特征，即先用多尺度分割算法与骨架化算法提取图像中的分叉点或交叉点及它们之间的连线，滤除不能组成环结构的特征点，从而找到特征点之间的连接关系。应用我们提出的动态路径移动算法检测环结构，并用归一化的分叉角度与分支长度来把环结构描述成特征向量。
 
-\item 基于环结构特征的视网膜图像配准。实现了把环结构特征应用在视网膜图像配准中，即在得到环结构特征向量后，用相似性度量进行特征向量匹配，找到最匹配的环结构特征对，再用相似性变换把一幅图像变换到另一幅图像中。提出了首先使用环上的分叉点及与环相连的血管点来做初始全局配准，再用局部未配准分叉点进行局部纠正的策略。提出骨架化对准精度来自动选择最佳配准结果，也可用来对配准结果进行定量评估。论文中还给出了不同变换模型、不同特征、不同方法之间的实验对比，以此来说明用环结构来做视网膜图像配准的可行性和有效性。
+\item 基于环结构特征的视网膜图像配准。实现了把环结构特征应用于视网膜图像配准中，即在得到环结构特征向量后，用相似性度量进行特征向量匹配，找到最匹配的环结构特征对，用相似性变换把一幅图像变换到另一幅图像中。提出骨架化对准精度来对配准结果进行定量评估。本文用VARIA数据集中的153对视网膜图像进行实验，配准成功率高达96.73\%，骨架化对准精度为0.938。论文中还给出了不同变换模型、不同特征之间的实验对比，以此来说明用环结构来做视网膜图像配准的可行性和有效性。
 
-\item 基于环结构特征的扇贝图像识别。构建了扇贝图像识别图像库，包括标准图像库与待识别图像库，并通过相似性度量进行特征匹配，基于最匹配的环结构特征找到标准图像库中与待识别图像库中相对应的扇贝图像，完成识别。
+\item 基于环结构特征的扇贝图像识别。构建了扇贝图像识别图像库，包括标准图像库与待识别图像库，并通过相似性度量进行特征匹配。根据得到的最匹配的环结构特征对找到标准图像库中与待识别图像库中相对应的扇贝图像，以此来达到识别的目的。针对构建的图像识别数据库，实验成功率达到83.3\%，说明用环结构特征来进行扇贝图像识别是可行且有效的。
 
 \end{enumerate}
 
@@ -261,22 +269,24 @@
 }
 \vskip12bp
 {\xiaosi\heiti\noindent
-关键词：\hskip1em 环结构特征, 图论, 视网膜图像配准, 扇贝图像识别}
+关键词：\hskip1em 环结构特征; 图论; 视网膜图像配准; 扇贝图像识别}
 
 \newpage
-
+\mbox{}
+\newpage
 % 英文摘要
 %%［需要填写：英文摘要、英文关键词］%%
 \begin{center}
   {\sanhao[1.5]\heiti\oucetitle\\\vskip7pt Abstract}
 \end{center}
 {\normalsize\songti
-In recent years, with the development of computer vision, feature extraction, as one of the most important technique, has got a lot of attention and research. Local features convert the complicated matching problem to the measure of feature vectors, can greatly reduce the complexity of the algorithm. The cycle structural feature invariant to translation, scaling and rotation is proposed base on the images with cycles, and can be applied to the image recognition and registration. The main work of this paper includes:
+With the development of computer vision, feature extraction, as one of the most important technique, has got a lot of attention and research in recent years. Local features convert the complicated matching problem to the measure of feature vectors, can greatly reduce the complexity of the algorithm. The cycle structural features based on the images with cycles can be applied to image recognition and registration as they are invariant to translation, scaling and rotation. The main work of this paper includes:
 
 \begin{enumerate}
-\item Cycle structural feature extraction and description. The main steps of feature extraction and description are elaborated in this section. Firstly, multiscale segmentation method and skeleton method are applied to obtain the points and lines in images. Then, the invalid points are filtered and the connection between points are detected. Finally, the Space-bases DFS algorithm and dynamic path moving algorithm are proposed to detect the cycle structural features and the angles and lengths of the branches are used to describe the cycle to feature vectors. 
-\item Retinal image registration based on cycle structural features. The steps applying the cycle structural features to retinal image registration are explained in this section. After the feature vectors obtained, using the similarity measure to match the them and find the best matching pair. The similarity transformation is used to transform one image to another according to the best matching pair. Global initial registration is implemented by the matched Cycle-Vessel feature points and local final registration is completed by the Cycle-Vessel-Bifurcation feature points using similarity transformation. Finally, the Skeleton Alignment Error Measure (SAEM) is calculated for optimal scale and cycle feature selection, yielding the best registration result intelligently. 
-\item Scallop image recognition based on cycle structural features. The scallop image recognition database is build which includes standard image database and image database used to be identified. The similarity measure is applied to match the feature vectors and the corresponding images between these two databases can be found according to the matching pairs.
+\item Extraction and description of cycle structural feature. According to the concept of cycle in graph, the algorithm to extract and descript cycle structural feature in images is proposed. Multiscale segmentation method and skeleton method are applied to obtain the bifurcations or intersections and the lines connected with them in images firstly. Dynamic path moving algorithm is proposed to detect the cycle structural features under the premise that the invalid points are filtered and the connection between points are detected. Finally, the angles and lengths of the branches are used to describe the cycle to feature vectors. 
+\item Retinal image registration based on cycle structural features. After the feature vectors obtained, using the similarity measure to match and find the best matching pair. The similarity transformation is used to transform one image to another according to the best matching pair to reach the purpose of registration. The VARIA database which includes 153 pairs of retinal images is used in this paper to verify the effectiveness and feasibility of the algorithm.
+In order to evaluate the result quantitiatively, the Skeleton Alignment Error Measure (SAEM) is calculated and the final registration result is 0.938.
+\item Scallop image recognition based on cycle structural features. The scallop image recognition database is built which includes standard image database and image database used to be recognized. The similarity measure is applied to match the feature vectors and the corresponding images between these two databases can be found according to the best matching pairs. For the built scallop image recognition database, the recognition success rate reached to 83.3\%, which means this method is feasible and effective for recognition purpose.
 \end{enumerate}  	
 The cycle structural feature is proposed in this paper and applied in the retinal image registration and scallop image registration, which means it has very vital significance.
    

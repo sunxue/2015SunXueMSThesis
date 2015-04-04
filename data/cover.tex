@@ -150,7 +150,7 @@
 %\newcommand{\oucdatedegree}{2009年6月}%学位授予时间
 \newcommand{\oucgratitude}{谨以此论文献给我的导师和亲人！}%封面感谢语
 
-\newcommand{\oucetitle}{Cycle strcutural feature in image and its applications}%论文英文题目
+\newcommand{\oucetitle}{Cycle Structure Feature in Image and its Applications}%论文英文题目
 %\newcommand{\ouceauthor}{Haiyong Zheng}%作者英文姓名
 \newcommand{\oucthesis}{\textsc{OUCThesis}}
 %%%%%默认自定义命令%%%%%
@@ -256,7 +256,7 @@
   \indent
   近年来，随着计算机视觉领域的不断发展，特征提取作为最重要的一环得到了大量学者的重视和研究。局部特征可把繁杂的图像匹配的问题转换为特征向量的度量问题，可以大大减小算法的复杂度，因而获得了迅速发展。本文针对存在环结构特征的图像，提出了一种环结构局部不变特征，满足平移、缩放、旋转不变性，可应用于图像识别、图像配准等各个领域。本文的主要工作有：
 \begin{enumerate}
-\item 环结构特征提取与描述。结合图论中环的概念，实现了在图像中提取及描述环结构特征，即先用多尺度分割算法与骨架化算法提取图像中的分叉点或交叉点及它们之间的连线，滤除不能组成环结构的特征点，从而找到特征点之间的连接关系。应用我们提出的动态路径移动算法检测环结构，并用归一化的分叉角度与分支长度来把环结构描述成特征向量。
+\item 环结构特征提取与描述。结合图论中环的概念，实现了在图像中提取及描述环结构特征，即先用多尺度分割算法与骨架化算法提取图像中的分叉点或交叉点及它们之间的连线，滤除不能组成环结构的特征点，从而找到特征点之间的连接关系。应用我们提出的基于广度优先策略的环结构检测算法检测环结构，并用归一化的分叉角度与分支长度来把环结构描述成特征向量。
 
 \item 基于环结构特征的视网膜图像配准。实现了把环结构特征应用于视网膜图像配准中，即在得到环结构特征向量后，用相似性度量进行特征向量匹配，找到最匹配的环结构特征对，用相似性变换把一幅图像变换到另一幅图像中。提出骨架化对准精度来对配准结果进行定量评估。本文用VARIA数据集中的153对视网膜图像进行实验，配准成功率高达96.73\%，骨架化对准精度为0.938。论文中还给出了不同变换模型、不同特征之间的实验对比，以此来说明用环结构来做视网膜图像配准的可行性和有效性。
 
@@ -280,18 +280,18 @@
   {\sanhao[1.5]\heiti\oucetitle\\\vskip7pt Abstract}
 \end{center}
 {\normalsize\songti
-With the development of computer vision, feature extraction, as one of the most important technique, has got a lot of attention and research in recent years. Local features convert the complicated matching problem to the measure of feature vectors, can greatly reduce the complexity of the algorithm. The cycle structural features based on the images with cycles can be applied to image recognition and registration as they are invariant to translation, scaling and rotation. The main work of this paper includes:
+With the development of computer vision, feature extraction, as one of the most important technique, has got a lot of attention and research in recent years. Local features convert the complicated matching problem to the measure of feature vectors, can greatly reduce the complexity of the algorithm. The cycle structure features based on the images with cycles can be applied to image recognition and registration as they are invariant to translation, scaling and rotation. The main work of this paper includes:
 
 \begin{enumerate}
-\item Extraction and description of cycle structural feature. According to the concept of cycle in graph, the algorithm to extract and descript cycle structural feature in images is proposed. Multiscale segmentation method and skeleton method are applied to obtain the bifurcations or intersections and the lines connected with them in images firstly. Dynamic path moving algorithm is proposed to detect the cycle structural features under the premise that the invalid points are filtered and the connection between points are detected. Finally, the angles and lengths of the branches are used to describe the cycle to feature vectors. 
-\item Retinal image registration based on cycle structural features. After the feature vectors obtained, using the similarity measure to match and find the best matching pair. The similarity transformation is used to transform one image to another according to the best matching pair to reach the purpose of registration. The VARIA database which includes 153 pairs of retinal images is used in this paper to verify the effectiveness and feasibility of the algorithm.
+\item Extraction and description of cycle structure feature. According to the concept of cycle in graph, the algorithm to extract and descript cycle structure feature in images is proposed. Multiscale segmentation method and skeleton method are applied to obtain the bifurcations or intersections and the lines connected with them in images firstly. Cycle search algorithm based on Breadth First Search is proposed to detect the cycle structure features under the premise that the invalid points are filtered and the connection between points are detected. Finally, the angles and lengths of the branches are used to describe the cycle to feature vectors. 
+\item Retinal image registration based on cycle structure features. After the feature vectors obtained, using the similarity measure to match and find the best matching pair. The similarity transformation is used to transform one image to another according to the best matching pair to reach the purpose of registration. The VARIA database which includes 153 pairs of retinal images is used in this paper to verify the effectiveness and feasibility of the algorithm.
 In order to evaluate the result quantitiatively, the Skeleton Alignment Error Measure (SAEM) is calculated and the final registration result is 0.938.
-\item Scallop image recognition based on cycle structural features. The scallop image recognition database is built which includes standard image database and image database used to be recognized. The similarity measure is applied to match the feature vectors and the corresponding images between these two databases can be found according to the best matching pairs. For the built scallop image recognition database, the recognition success rate reached to 83.3\%, which means this method is feasible and effective for recognition purpose.
+\item Scallop image recognition based on cycle structure features. The scallop image recognition database is built which includes standard image database and image database used to be recognized. The similarity measure is applied to match the feature vectors and the corresponding images between these two databases can be found according to the best matching pairs. For the built scallop image recognition database, the recognition success rate reached to 83.3\%, which means this method is feasible and effective for recognition purpose.
 \end{enumerate}  	
-The cycle structural feature is proposed in this paper and applied in the retinal image registration and scallop image registration, which means it has very vital significance.
+The cycle structure feature is proposed in this paper and applied in the retinal image registration and scallop image registration, which means it has very vital significance.
    
 }
 \vskip12bp
 {\xiaosi\heiti\noindent 
-\textbf{Keywords:\enskip cycle structural feature, graph theory, retinal image registration, scallop image recognition}}
+\textbf{Keywords:\enskip cycle structure feature, graph theory, retinal image registration, scallop image recognition}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

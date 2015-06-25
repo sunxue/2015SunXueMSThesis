@@ -137,10 +137,10 @@
 \newcommand{\UDC}{}%UDC
 \newcommand{\oucctitle}{图像中环结构特征及其应用}%论文中文题目
 \ctitle{图像中环结构特征及其应用}%必须修改因为页眉中用到
-\cauthor{***}%可以选择修改因为仅在 pdf 文档信息中用到
+\cauthor{孙雪}%可以选择修改因为仅在 pdf 文档信息中用到
 \cdegree{工学博士}%可以选择修改因为仅在 pdf 文档信息中用到
 \ckeywords{环结构特征, 图论, 视网膜图像配准, 扇贝图像识别}%可以选择修改因为仅在 pdf 文档信息中用到
-\newcommand{\ouccauthor}{***}%作者中文姓名
+\newcommand{\ouccauthor}{孙雪}%作者中文姓名
 %\newcommand{\ouccsupervisor}{姬光荣教授}%作者导师中文姓名
 %\newcommand{\ouccdegree}{博\hspace{1em}士}%作者申请学位级别
 %\newcommand{\ouccmajor}{海洋信息探测与处理}%作者专业名称
@@ -170,9 +170,7 @@
 
 
 \newpage
-\mbox{}
-\newpage
-
+\begin{comment}
 % 论文封面第二页
 %%不需要改动%%
 \vspace*{1cm}
@@ -184,7 +182,8 @@
 \begin{flushright}
 {\renewcommand{\arraystretch}{1.3}
   \begin{tabular}{r@{}l}
-    学位论文答辩日期：~ & \oucunderline{1.8em}{\oucdatedefense} \\
+    学位论文答辩日期：~ & \oucunderline{2.5cm}{\oucdatedefense} \\
+    
     指导教师签字：~ & \oucblankunderline{5cm} \\
     答辩委员会成员签字：~ & \oucblankunderline{5cm} \\
     ~ & \oucblankunderline{5cm} \\
@@ -198,8 +197,7 @@
 \end{flushright}
 }
 
-\newpage
-\mbox{}
+
 \newpage
 
 
@@ -240,8 +238,7 @@
 签字日期：\hskip1cm 年\hskip0.7cm 月\hskip0.7cm 日\relax\hfill%
 签字日期：\hskip1cm 年\hskip0.7cm 月\hskip0.7cm 日\relax\hspace*{1.2cm}}
 
-\newpage
-\mbox{}
+\end{comment}
 \newpage
 \pagestyle{plain}
 \clearpage\pagenumbering{roman}
@@ -256,11 +253,11 @@
   \indent
   近年来，随着计算机视觉领域的不断发展，特征提取作为最重要的一环得到了大量学者的重视和研究。局部特征可把繁杂的图像匹配的问题转换为特征向量的度量问题，可以大大减小算法的复杂度，因而获得了迅速发展。本文针对存在环结构特征的图像，提出了一种环结构局部不变特征，满足平移、缩放、旋转不变性，可应用于图像识别、图像配准等各个领域。本文的主要工作有：
 \begin{enumerate}
-\item 环结构特征提取与描述。结合图论中环的概念，实现了在图像中提取及描述环结构特征，即先用多尺度分割算法与骨架化算法提取图像中的分叉点或交叉点及它们之间的连线，滤除不能组成环结构的特征点，从而找到特征点之间的连接关系。应用我们提出的基于广度优先策略的环结构检测算法检测环结构，并用归一化的分叉角度与分支长度来把环结构描述成特征向量。
+\item 环结构特征提取与描述。结合图论中环的概念，用多尺度分割算法与骨架化算法提取图像中的分叉点或交叉点及它们之间的连线，滤除不能组成环结构的特征点，找到特征点之间的连接关系；应用我们提出的基于广度优先策略的环结构检测算法检测环结构，并用归一化的分叉角度与分支长度构建的特征向量对环结构特征进行描述。
 
-\item 基于环结构特征的视网膜图像配准。实现了把环结构特征应用于视网膜图像配准中，即在得到环结构特征向量后，用相似性度量进行特征向量匹配，找到最匹配的环结构特征对，用相似性变换把一幅图像变换到另一幅图像中。提出骨架化对准精度来对配准结果进行定量评估。本文用VARIA数据集中的153对视网膜图像进行实验，配准成功率高达96.73\%，骨架化对准精度为0.938。论文中还给出了不同变换模型、不同特征之间的实验对比，以此来说明用环结构来做视网膜图像配准的可行性和有效性。
+\item 基于环结构特征的视网膜图像配准。实现了环结构特征在视网膜图像配准中的应用，即通过环结构特征提取及描述得到特征向量后，采用相似性度量找到最匹配的环结构特征对，通过相似性变换将一幅图像映射到另一幅图像中，提出了骨架化对准精度对配准结果进行定量评价。本文用VARIA数据集中组合挑选的153对视网膜图像进行实验，配准成功率达96.73\%，骨架化对准精度为0.938。论文中还给出了不同变换模型、不同特征之间的实验对比，实验结果表明环结构特征进行视网膜图像配准的可行性和有效性。
 
-\item 基于环结构特征的扇贝图像识别。构建了扇贝图像识别图像库，包括标准图像库与待识别图像库，并通过相似性度量进行特征匹配。根据得到的最匹配的环结构特征对找到标准图像库中与待识别图像库中相对应的扇贝图像，以此来达到识别的目的。针对构建的图像识别数据库，实验成功率达到83.3\%，说明用环结构特征来进行扇贝图像识别是可行且有效的。
+\item 基于环结构特征的扇贝图像识别。构建了扇贝识别图像库，包括标准图像库与待识别图像库，并通过相似性度量进行特征匹配；根据得到的最匹配的环结构特征对找到标准图像库中与待识别图像库中相对应的扇贝图像，从而达到识别的目的。针对构建的图像识别数据库，实验成功率达到83.3\%，实验结果表明环结构特征进行扇贝图像识别是可行且有效的。
 
 \end{enumerate}
 
@@ -272,8 +269,6 @@
 关键词：\hskip1em 环结构特征; 图论; 视网膜图像配准; 扇贝图像识别}
 
 \newpage
-\mbox{}
-\newpage
 % 英文摘要
 %%［需要填写：英文摘要、英文关键词］%%
 \begin{center}
@@ -284,8 +279,8 @@
 Feature extraction which plays a key role in computer vision attracts more and more attention by researchers in recent years. Local features usually convert the complicated matching problem to the measure of feature vectors, thus can greatly reduce the complexity of the algorithm. This paper proposes a cycle structure feature which is invariant to translation, scaling and rotation and it can be used for image recognition and registration. The main work of this paper includes:
 
 \begin{enumerate}
-\item Extraction and description of cycle structure feature. Combined with the concept of cycle in graph, the algorithm to extract and describe cycle structure feature in images is proposed in this paper. To overcome the dependence on the segmentation for registration or recognition, a multiwavelet kernels and multiscale hierarchical decomposition method is adopted to generate multiscale binary maps at varying image resolutions in different levels of details. The multiscale segmentation results are further processed for better feature extraction. Cycle detecting algorithm based on Breadth First Search strategy is then proposed to detect the cycle structure feature composed of bifurcation points, intersection points and the connected lines. Finally, the feature is described as feature vector using normalized angles and lengths of the branches. 
-\item Retinal image registration based on cycle structure feature. Matching two cycle structure features with the same number of feature points can be implemented by minimizing the similarity measure between feature vectors. It tries to find the most accurate matching cycle structure features which can be used for the parameter estimation of the following similarity transformation. VARIA database which includes 153 pairs of retinal images is used to evaluate and compare the performance of our method for retinal image registration. In order to evaluate the results quantitatively, the Skeleton Alignment Error Measure (SAEM) is defined and the final registration result is 0.938 pixel.
+\item Extraction and description of cycle structure feature. Combined with the concept of cycle in graph, the algorithm to extract and describe cycle structure feature in images is proposed in this paper. To overcome the dependence on the segmentation for registration or recognition, a multiwavelet kernels and multiscale hierarchical decomposition method is adopted to generate multiscale binary maps at varying image resolutions in different levels of details. The multiscale segmentation results are further processed for better feature extraction. Cycle detection algorithm based on Breadth First Search strategy is then proposed to detect the cycle structure feature composed of bifurcation points, intersection points and the connected lines. Finally, the feature is described as feature vector using normalized angles and lengths of the branches. 
+\item Retinal image registration based on cycle structure feature. Matching two cycle structure features with the same number of feature points can be implemented by minimizing the similarity measure between feature vectors. It tries to find the most accurate matching cycle structure features which can be used for the parameter estimation of the following similarity transformation. VARIA database is used to evaluate and compare the performance of our method for retinal image registration. In order to evaluate the results quantitatively, the Skeleton Alignment Error Measure (SAEM) is defined and the final registration result is 0.938 pixel.
 \item Scallop image identification based on cycle structure feature. The scallop image identification database is constructed by reference image database and identifying image database. The similarity measure is applied to match the feature vectors between the images from these two databases. Then the reference image, which has the minimum value of similarity measure with an identifying image, is treated as the detected scallop image. For the constructed scallop image identification database, the identification success rate reaches to 83.3\%, which means this method is feasible and effective for identification purpose.
 \end{enumerate}  
 	

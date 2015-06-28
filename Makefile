@@ -3,7 +3,7 @@
 # Compiling method: xelatex/pdflatex/dvipdfmx
 METHOD = xelatex
 # Basename of thesis
-THESISMAIN = main
+THESISMAIN = 2015SunXueMSThesis
 # Basename of shuji
 SHUJIMAIN = shuji
 
